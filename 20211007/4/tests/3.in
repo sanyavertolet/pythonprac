@@ -1,0 +1,2 @@
+'sin(cos(sin(cos(x))))', 'log(4**(x * sin(x)))', 'x - y'
+5
