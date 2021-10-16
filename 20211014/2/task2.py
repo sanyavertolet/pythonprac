@@ -26,7 +26,7 @@ for y in F:
     if y[1] < y_from:
         y_from = y[1]
 
-F = [(y[0], int(scale(y_to, y_from, 0, height + 1, y[1]))) for y in F]
+F = [(y[0], round(scale(y_to, y_from, 0, height + 1, y[1]))) for y in F]
 
 field = [[' ' for j in range(width + 2)] for i in range(height + 2)]
 
