@@ -1,0 +1,9 @@
+:def A 0
+def 2
+:def A 1
+def 2
+:def z exp(z)*log(z)
+def 2
+:def quit quit*len(quit)+quit*3
+def 'aboba'
+quit 'F'

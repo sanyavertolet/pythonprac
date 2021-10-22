@@ -1,0 +1,11 @@
+:log x log(x)
+log 1
+:cos y cos(y)
+cos 0
+:e z exp(z)
+e 3
+:squareroot f sqrt(f)
+:polynome a a**2+3*a-9
+squareroot 64
+polynome 5
+quit 228

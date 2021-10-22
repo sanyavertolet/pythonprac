@@ -1,0 +1,5 @@
+:doubleitem item item*2
+doubleitem '/sanya_vertolet'
+doubleitem 2
+doubleitem ['2','2','8']
+quit 0
