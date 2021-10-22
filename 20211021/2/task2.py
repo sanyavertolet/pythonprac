@@ -1,5 +1,7 @@
 import math
 
+#TODO: update
+
 f = dict()
 
 command = input()
