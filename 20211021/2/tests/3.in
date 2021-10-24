@@ -6,4 +6,10 @@ def 2
 def 2
 :def quit quit*len(quit)+quit*3
 def 'aboba'
-quit 'F'
+:printhw 'Hello,World!!!'
+printhw
+:ab a b a*b
+ab 2 4
+:def a b c d a*b*c*d
+def 1 2 3 4
+quit '{}F{}'

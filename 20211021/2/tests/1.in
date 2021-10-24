@@ -8,4 +8,4 @@ e 3
 :polynome a a**2+3*a-9
 squareroot 64
 polynome 5
-quit 228
+quit {}:{}
