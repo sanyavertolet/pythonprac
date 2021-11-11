@@ -1,0 +1,1 @@
+print(OrderedComplex(456345, -75676) < OrderedComplex(16870, 15234), OrderedComplexMul(1233, 0) @ OrderedComplexMul(0, 34534615))
