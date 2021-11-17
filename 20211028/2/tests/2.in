@@ -1,0 +1,1 @@
+print(list(i for i, _ in zip(slide(itertools.cycle(range(10)), 4), range(100))))
