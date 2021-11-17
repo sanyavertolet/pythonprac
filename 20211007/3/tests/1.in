@@ -1,1 +1,1 @@
-'g', 'abcdefghijklmnopqrstuvwxyz'
+print(Bisect('g', 'abcdefghijklmnopqrstuvwxyz'))

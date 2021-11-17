@@ -1,1 +1,1 @@
-35, tuple(range(100))
+print(Bisect(35, tuple(range(100))))
