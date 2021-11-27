@@ -1,0 +1,10 @@
+class C:
+    num = Num()
+    mun = Num()
+
+a = C()
+print(a.num, a.mun)
+a.num = 'WHOLL STOP THE RAIN'
+a.mun = 15
+print(a.num + a.mun)
+

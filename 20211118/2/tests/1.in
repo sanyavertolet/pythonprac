@@ -1,0 +1,9 @@
+class Cls:
+    num = Num()
+
+print(Cls().num)
+a, b = Cls(), Cls()
+a.num = range(1, 100, 2)
+print(a.num)
+b.num = 'long as i can see the light'
+print(a.num + b.num)

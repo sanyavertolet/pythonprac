@@ -1,0 +1,6 @@
+class C(str):
+    num = Num()
+
+a = C(15)
+a.num = a
+print(a, a.num)
