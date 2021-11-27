@@ -1,0 +1,18 @@
+@objcount
+class Gromozeka:
+    def __init__(self, arg = 'BZZZ'):
+        print('ME SAY', arg)
+        self.phrase = arg
+    def __del__(self):
+        print('ME NO SAY', self.phrase, 'ANYMORE :c')
+
+a = Gromozeka()
+b = Gromozeka('YEEEEEEY')
+c = Gromozeka('RED GOES FASTA')
+print(Gromozeka.counter)
+a = 0
+b = 0
+print(Gromozeka.counter)
+c = 0
+print(Gromozeka.counter)
+

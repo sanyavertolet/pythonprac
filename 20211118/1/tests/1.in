@@ -1,0 +1,12 @@
+@objcount
+class Class:
+    pass
+
+a, b, c = Class(), Class(), Class()
+print(Class.counter)
+d = Class()
+del a
+print(Class.counter)
+b = 2
+c = 3
+print(Class.counter)
