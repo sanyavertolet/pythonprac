@@ -1,0 +1,19 @@
+import time
+
+a_start = time.time()
+
+for i in range(100):
+    a = Alpha(a=1,b=2,c=3,d=4,e=5)
+    a_str = str(a)
+
+a_stop = time.time()
+
+
+aq_start = time.time()
+
+for i in range(100):
+    aq = AlphaQ(a=1,b=2,c=3,d=4,e=5)
+    aq_str = str(aq)
+
+aq_stop = time.time()
+print(aq_stop - aq_start > a_stop - a_start)
