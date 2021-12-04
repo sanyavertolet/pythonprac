@@ -1,0 +1,14 @@
+class Squarator(metaclass=dump):
+    def __init__(self, value):
+        self.value = value
+    
+    def square(self):
+        self.value = self.value * self.value
+        return self
+
+    def __str__(self):
+        return str(self.value)
+
+squarator = Squarator(2)
+for i in range(10):
+    print(squarator.square())

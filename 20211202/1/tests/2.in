@@ -1,0 +1,8 @@
+class A(metaclass=dump):
+    def moh(self, seemtobe='moh'):
+        return f'Become something that seems to be {seemtobe}'
+
+a = A()
+print(a.moh())
+print(a.moh('moh?'))
+
