@@ -1,0 +1,11 @@
+class A(metaclass=check):
+    text: str
+    def __init__(self, not_text = 0):
+        self.text = not_text
+
+a = A()
+print(a.check_annotations())
+
+a.text = type('Text', (str,), {})(2)
+print(a.check_annotations())
+

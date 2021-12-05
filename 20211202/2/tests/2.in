@@ -1,0 +1,21 @@
+class Bipka(metaclass=check):
+    n: int
+    name: str
+    is_present: bool
+
+    def __init__(self, n=1, name='bipka(s)', is_present=False):
+        self.n = n
+        self.name = name
+        self.is_present = is_present
+    
+    def ask(self):
+        print(f'Are {name} present anywhere?')
+
+    def answer(self):
+        print(f'{is_present}, here are {n} {name}')
+
+b = Bipka()
+print(b.check_annotations())
+b.n = 'None'
+print(b.check_annotations())
+
