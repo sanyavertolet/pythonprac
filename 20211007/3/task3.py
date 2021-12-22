@@ -8,5 +8,6 @@ def Bisect(item, seq):
         return Bisect(item, seq[:middle])
     return Bisect(item, seq[middle + 1:])
 
-import sys
-eval(sys.stdin.read())
+a, *b = eval(input())
+b = b[0]
+print(Bisect(a, b))

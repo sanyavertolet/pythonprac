@@ -22,7 +22,7 @@ gas_vol = gas * (height - 2)
 liquid_vol = liquid * (height - 2)
 
 liquid = liquid_vol // (width - 2)
-if liquid_vol % 2 != 0:
+if liquid_vol % (width - 2) != 0:
     liquid += 1
 gas = height - liquid - 2
 

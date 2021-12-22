@@ -11,6 +11,5 @@ def Calc(s, t, u):
         return eval(u)
     return f
 
-
-import sys
-eval(sys.stdin.read())
+f = Calc(*eval(input()))
+print(f(eval(input())))

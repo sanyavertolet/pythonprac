@@ -9,4 +9,4 @@ class OrderedComplexMul(OrderedComplex):
 
 
 import sys
-eval(sys.stdin.read())
+exec(sys.stdin.read())

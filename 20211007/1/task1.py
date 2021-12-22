@@ -8,5 +8,4 @@ def Pareto(*pairs):
             result.append(pair_1)
     return tuple(result)
 
-import sys
-eval(sys.stdin.read())
+print(Pareto(*eval(input())))

@@ -8,7 +8,7 @@ while i < 3:
         while a != 0:
             s += a % 10
             a //= 10
-        if s % 6 == 0:
+        if s == 6:
             print(n + i, '*', n + j, '=:=)', sep='', end=' ')
         else:
             print(n + i, '*', n + j, '=', (n + i) * (n + j), sep='', end=' ')

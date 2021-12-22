@@ -17,9 +17,9 @@ class AlphaQ:
             else:
                 raise AttributeError()
 
-    def __getattr__(self, item):
-        if item in dir(self):
-            return self.item
+    def __setattr__(self, obj, val):
+        if obj in string.ascii_lowercase:
+            super().__setattr__(obj, val)
         else:
             raise AttributeError()
 

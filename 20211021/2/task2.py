@@ -17,4 +17,4 @@ while command.split()[0] != 'quit':
         var_dict = { vr: eval(vl) for vr, vl in zip(var, val)}
         print(eval(expr, math.__dict__, var_dict))
     command = input()
-print(command.split()[1].format(len(f) + 1, counter))
+print(eval(command.split()[1]).format(len(f) + 1, counter))
