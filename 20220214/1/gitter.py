@@ -6,10 +6,12 @@ git_path = '.git'
 objects_path = os.path.join(git_path, 'objects')
 heads_path = os.path.join(git_path, 'refs', 'heads')
 
+
 def print_branches():
     branches = os.listdir(heads_path)
     for branch in branches:
         print(branch)
+
 
 def print_last_commit(branch_name):
     branch_head_path = os.path.join(heads_path, branch_name)
@@ -23,9 +25,25 @@ def print_last_commit(branch_name):
     with open(commit_path, 'rb') as commit_file:
         commit = zlib.decompress(commit_file.read())
         header, _, body = commit.partition(b'\x00')
+        body = body.decode()
         _, size = header.split()
         print(f'Last commit in branch \'{branch_name}\' with size {int(size)}\n')
-        print(body.decode())
+        print(body)
+        tree_id = body.split('tree ')[1].split()[0]
+        print_commit_tree(tree_id)
+
+
+def print_commit_tree(tree_id):
+    tree_path = os.path.join(objects_path, tree_id[:2], tree_id[2:])
+    with open(tree_path, 'rb') as tree_file:
+        tree = zlib.decompress(tree_file.read())
+        header, _, body = tree.partition(b'\x00')
+        _, size = header.split()
+        while body:
+            treehdr, _, treetail = body.partition(b'\x00')
+            gitid, body = treetail[:20], treetail[20:]
+            print(f'\t{treehdr.decode()}, {gitid.hex()}')
+
 
 if len(sys.argv) == 1:
     print_branches()
