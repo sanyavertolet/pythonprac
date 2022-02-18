@@ -33,7 +33,15 @@ def print_last_commit(branch_name):
         print_commit_tree(tree_id)
 
 
-def print_commit_tree(tree_id):
+def is_tree(obj_id):
+    with open(os.path.join(objects_path, obj_id[:2], obj_id[2:]), 'rb') as obj_file:
+        obj = zlib.decompress(obj_file.read())
+        header, _, _ = obj.partition(b'\x00')
+        obj_type, _ = header.split()
+        return obj_type == b'tree'
+
+
+def print_commit_tree(tree_id, indent = 1):
     tree_path = os.path.join(objects_path, tree_id[:2], tree_id[2:])
     with open(tree_path, 'rb') as tree_file:
         tree = zlib.decompress(tree_file.read())
@@ -42,7 +50,10 @@ def print_commit_tree(tree_id):
         while body:
             treehdr, _, treetail = body.partition(b'\x00')
             gitid, body = treetail[:20], treetail[20:]
-            print(f'\t{treehdr.decode()}, {gitid.hex()}')
+            treehdr = treehdr.decode()
+            print(f'{"|" + "-" * indent + ">"}{treehdr}, {gitid.hex()}')
+            if is_tree(gitid.hex()):
+                print_commit_tree(gitid.hex(), indent + 1)
 
 
 if len(sys.argv) == 1:
