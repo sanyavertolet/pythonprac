@@ -13,25 +13,30 @@ def print_branches():
         print(branch)
 
 
-def print_last_commit(branch_name):
+def get_head_commit_id(branch_name):
     branch_head_path = os.path.join(heads_path, branch_name)
     try:
         with open(branch_head_path) as branch_head_file:
-            commit_id = branch_head_file.readline().strip()
-    except FileNotFoundError:
+            return branch_head_file.read().strip()
+    except FileNotFoundError as exception:
         print('No such brunch is found in this repo.')
-        return
+        raise exception
+
+def print_commit(commit_id):
     commit_path = os.path.join(objects_path, commit_id[:2], commit_id[2:])
     with open(commit_path, 'rb') as commit_file:
         commit = zlib.decompress(commit_file.read())
         header, _, body = commit.partition(b'\x00')
         body = body.decode()
         _, size = header.split()
-        print(f'Last commit in branch \'{branch_name}\' with size {int(size)}\n')
+        print(f'Commit {commit_id} with size {int(size)}\n')
         print(body)
         tree_id = body.split('tree ')[1].split()[0]
         print_commit_tree(tree_id)
-
+        if len(body.split('parent ')) > 1:
+            parent_commit_id = body.split('parent ')[1].split()[0]
+            print_commit(parent_commit_id)
+        
 
 def is_tree(obj_id):
     with open(os.path.join(objects_path, obj_id[:2], obj_id[2:]), 'rb') as obj_file:
@@ -59,6 +64,6 @@ def print_commit_tree(tree_id, indent = 1):
 if len(sys.argv) == 1:
     print_branches()
 elif len(sys.argv) == 2:
-    print_last_commit(sys.argv[1])
+    print_commit(get_head_commit_id(sys.argv[1]))
 else:
     print('Usage: python3 gitter')
