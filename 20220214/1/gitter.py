@@ -33,8 +33,8 @@ def print_commit(commit_id):
         print(body)
         tree_id = body.split('tree ')[1].split()[0]
         print_commit_tree(tree_id)
-        if len(body.split('parent ')) > 1:
-            parent_commit_id = body.split('parent ')[1].split()[0]
+        if len(body.split('parent ')) == 2:
+            parent_commit_id = body.split('parent ')[1].split()[0].replace(',', '')
             print_commit(parent_commit_id)
         
 
