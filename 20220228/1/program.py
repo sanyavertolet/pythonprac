@@ -11,3 +11,6 @@ def get_valid_string():
         string = input()
     return string
 
+
+res = dist(get_valid_string(), get_valid_string())
+
