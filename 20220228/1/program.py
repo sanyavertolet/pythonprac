@@ -23,5 +23,8 @@ s3 = get_valid_string()
 
 with multiprocessing.Pool(1) as pool:
     process = pool.apply_async(dist, (s1, s2, s3))
-    res = process.get()
+    try:
+        res = process.get(timeout=1)
+    except multiprocessing.context.TimeoutError:
+        res = -1
 
