@@ -1,8 +1,13 @@
 import textdistance
 
 
-def dist(s1, s2):
-    return textdistance.levenshtein(s1, s2)
+def dist(s1, s2, s3):
+    if s3 == 'L':
+        return textdistance.levenshtein(s1, s2)
+    elif s3 == 'D':
+        return textdistance.damerau_levenshtein(s1, s2)
+    else:
+        return -1
 
 
 def get_valid_string():
@@ -11,7 +16,10 @@ def get_valid_string():
         string = input()
     return string
 
+s1 = get_valid_string()
+s2 = get_valid_string()
+s3 = get_valid_string()
 
-res = dist(get_valid_string(), get_valid_string())
+res = dist(s1, s2, s3)
 print(res)
 
