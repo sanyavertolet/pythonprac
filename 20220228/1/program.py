@@ -11,6 +11,9 @@ def get_valid_string():
         string = input()
     return string
 
+s1 = get_valid_string()
+s2 = get_valid_string()
+s3 = get_valid_string()
 
-res = dist(get_valid_string(), get_valid_string())
+res = dist(s1, s2)
 
