@@ -2,7 +2,12 @@ import textdistance
 
 
 def dist(s1, s2, s3):
-    return textdistance.levenshtein(s1, s2)
+    if s3 == 'L':
+        return textdistance.levenshtein(s1, s2)
+    elif s3 == 'D':
+        return textdistance.damerau_levenshtein(s1, s2)
+    else:
+        return -1
 
 
 def get_valid_string():
