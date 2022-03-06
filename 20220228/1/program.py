@@ -28,3 +28,5 @@ with multiprocessing.Pool(1) as pool:
     except multiprocessing.context.TimeoutError:
         res = -1
 
+print(res)
+
