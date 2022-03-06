@@ -1,3 +1,4 @@
+import multiprocessing
 import textdistance
 
 
@@ -20,5 +21,7 @@ s1 = get_valid_string()
 s2 = get_valid_string()
 s3 = get_valid_string()
 
-res = dist(s1, s2, s3)
+with multiprocessing.Pool(1) as pool:
+    process = pool.apply_async(dist, (s1, s2, s3))
+    res = process.get()
 
