@@ -5,6 +5,8 @@ class Monster:
     def __init__(self, name, hp):
         self.name = name
         self.hp = hp
+    def __str__(self):
+        return '{} {} hp'.format(self.name, self.hp)
 
 class Dungeon(cmd.Cmd):
     prompt = '(Dungeon) '
@@ -39,8 +41,25 @@ class Dungeon(cmd.Cmd):
             print('no {} here'.format(monster_name))
 
 
+    def is_pos_valid(self, pos):
+        return 0 <= pos[0] <= 9 and 0 <= pos[1] <= 9
+
+
+    def move(self, from_cell, direction):
+        moves = {'up': (0, 1), 'down': (0, -1), 'left': (-1, 0), 'right': (1, 0)}
+        return (from_cell[0] + moves[direction][0], from_cell[1] + moves[direction][1])
+
     def do_move(self, args):
-        pass
+        direction = shlex.split(args)[0]
+        future_pos = self.move(self.player_pos, direction)
+        if self.is_pos_valid(future_pos):
+            self.player_pos = future_pos
+            x, y = self.player_pos
+            print('player at {} {}'.format(x, y))
+            if self.dungeon_map[x][y]:
+                print('encountered: ' + ', '.join(map(str, self.dungeon_map[x][y])))
+        else:
+            print('cannot move')
 
 
     def complete_attack(self, prefix, line, start_index, end_index):
