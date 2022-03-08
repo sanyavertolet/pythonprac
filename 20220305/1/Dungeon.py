@@ -14,7 +14,10 @@ class Dungeon(cmd.Cmd):
     
 
     def do_add(self, args):
-        pass
+        _, _, name, _, hp, _, x, y = shlex.split(args)
+        self.dungeon_map[x][y].append(Monster(name, int(hp))
+        
+
 
     def do_show(self, args):
         pass
