@@ -25,7 +25,7 @@ class Dungeon(cmd.Cmd):
 
 
     def do_attack(self, args):
-        monster_name = shlex.split(args)[0]
+        monster_name = args
         x, y = self.player_pos
         monsters = self.dungeon_map[x][y]
         for monster in monsters:
