@@ -63,10 +63,13 @@ class Dungeon(cmd.Cmd):
 
 
     def complete_attack(self, prefix, line, start_index, end_index):
-        pass
+        x, y = self.player_pos
+        monster_names = [monster.name for monster in self.dungeon_map[x][y]]
+        return [monster_name for monster_name in monster_names if monster_name.startswith(prefix)]
 
 
     def complete_move(self, prefix, line, start_index, end_index):
-        pass
+        dirs = ['up', 'down', 'left', 'right']
+        return [direction for direction in dirs if direction.startswith(prefix)]
 
 Dungeon().cmdloop()
