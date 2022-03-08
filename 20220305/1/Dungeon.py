@@ -1,12 +1,20 @@
 import cmd
 import shlex
 
+class Monster:
+    def __init__(self, name, hp):
+        self.name = name
+        self.hp = hp
+    def __str__():
+        pass 
 
 class Dungeon(cmd.Cmd):
     prompt = '(Dungeon) '
+    dungeon_map = [[[] for i in range(10)] for i in range(10)]
+    
+
     def do_add(self, args):
         pass
-
 
     def do_show(self, args):
         pass
