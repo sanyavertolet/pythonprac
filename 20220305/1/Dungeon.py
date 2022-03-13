@@ -46,7 +46,7 @@ class Dungeon(cmd.Cmd):
 
 
     def move(self, from_cell, direction):
-        moves = {'up': (0, 1), 'down': (0, -1), 'left': (-1, 0), 'right': (1, 0)}
+        moves = {'up': (0, -1), 'down': (0, 1), 'left': (-1, 0), 'right': (1, 0)}
         return (from_cell[0] + moves[direction][0], from_cell[1] + moves[direction][1])
 
     def do_move(self, args):
