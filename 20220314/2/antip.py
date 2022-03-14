@@ -12,8 +12,8 @@ def get_utree(fname):
     src = re.sub('\'\'\'[^\'\'\']*\'\'\'', '', src)
     src = re.sub('\"[^\"]*\"', '', src)
     src = re.sub('\"\"\"[^\"\"\"]*\"\"\"', '', src)
-    src = re.sub('[A-Z]([^(\(|\[)])*\([^A-Z\[\()\],]*', '`(', src)
-    return re.sub('[A-Z]([^(\(|\[)])*\[[^A-Z\[\()\],]*', '`[', src)
+    src = re.sub('[a-z]([^(\(|\[)])*\([^A-Z\[\()\],]*', '(', src)
+    return re.sub('[a-z]([^(\(|\[)])*\[[^A-Z\[\()\],]*', '[', src)
 
 if len(sys.argv) == 3:
     src = [get_utree(sys.argv[i]) for i in range(1, len(sys.argv))]
