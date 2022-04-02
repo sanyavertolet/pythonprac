@@ -1,0 +1,22 @@
+Здравствуйте! 
+
+Был найден баг, связанный с некорректным парсингом пустых структур: неправильно обрабатывался случай пустых структур.
+Ошибка исправлена добавлением еще одного пункта в оператор when.
+
+Привожу пример кода, который подтверждает работоспособность изправления:
+
+import com.akuleshov7.ktoml.Toml
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class Test(val ignoreLines: MutableList<String>? = null)
+
+fun main() {
+    val testClass: Test = Toml.decodeFromString("ignoreLines = []")
+    println("${testClass.ignoreLines?.size ?: "ignoreLines is null"}") // 0
+    println(testClass.ignoreLines)                                     // []
+    println(testClass.ignoreLines?.get(0) is String)                   // Exception in thread "main" java.lang.IndexOutOfBoundsException: Empty list doesn't contain element at index 0.
+}
+
+
