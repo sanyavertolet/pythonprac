@@ -1,0 +1,31 @@
+ktoml: ошибка в парсинге пустых списков
+
+Здравствуйте! Столкнулся с проблемой парсинга пустых списков при помощи вашей библиотеки (версия 0.2.7).
+
+
+Вот код, который работает некорректно:
+
+import com.akuleshov7.ktoml.Toml
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class Test(val ignoreLines: MutableList<String>? = null)
+
+fun main() {
+    val testClass: Test = Toml.decodeFromString("ignoreLines = []")
+    println("${testClass.ignoreLines?.size ?: "ignoreLines is null"}") // 1
+    println(testClass.ignoreLines)                                     // [null]
+    println(testClass.ignoreLines?.get(0) is String)                   // true
+}
+
+
+Ожидаемое поведение:
+    ignoreLines - пустой список строк (тип MutableList<String>?)
+
+Реальное поведение:
+    ingoreLines - список, состоящий из одного элемента - строки "null"
+
+Примечание:
+    Подобная ошибка воспроизводится, если ожидаемый тип ignoreLines - List<String>?, Set<String>?
+
