@@ -1,0 +1,5 @@
+[flake8]
+exclude = .git, __pycache__, tests/*
+filename = *.py
+max-line-length = 180
+ignore = E402
