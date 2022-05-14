@@ -47,7 +47,7 @@ class SolveSquareTest(unittest.TestCase):
         self.assertTrue(x2 == 1)
         self.squareIO.printResult(result)
 
-    def test_zero_d(self):
+    def test_negative_d(self):
         a = self.squareIO.inputCoeff("a", 1)
         b = self.squareIO.inputCoeff("b", 1)
         c = self.squareIO.inputCoeff("c", 1)
